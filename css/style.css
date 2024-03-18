@@ -2,12 +2,15 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #F8BBD0; /* Light pink background */
 }
 
 #app {
     display: flex;
     justify-content: space-between;
     height: 100vh;
+    border-top: 3px solid #AD1457; /* Darker pink border on top as separator */
+    background-color: #F48FB1; /* Light pink background for the app container */
 }
 
 .sidebar {
@@ -15,6 +18,7 @@ body, html {
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
+    border-right: 2px solid #AD1457; /* Darker pink line separator */
 }
 
 #pomodoro-timer {
@@ -26,11 +30,13 @@ body, html {
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
+    background-color: #FFCDD2; /* Even lighter pink for the timer section */
 }
 
 #timer-display {
     font-size: 48px;
     margin-bottom: 20px;
+    color: #D81B60; /* Dark pink font color for the timer display */
 }
 
 button {
@@ -38,6 +44,15 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    background-color: #AD1457; /* Darker pink for buttons */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #C2185B; /* Slightly darker pink on hover for buttons */
 }
 
 input[type="text"], textarea {
@@ -58,6 +73,23 @@ ul {
 
 li {
     margin-bottom: 10px;
+}
+
+/* Styling for the task description and delete button */
+#current-task-input, #new-task-input {
+    margin-bottom: 5px;
+}
+
+.delete-btn {
+    background-color: #FFCDD2;
+    color: #AD1457;
+    border: 1px solid #AD1457;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.delete-btn:hover {
+    background-color: #FFEBEE;
 }
 
 .completed {

@@ -70,24 +70,49 @@ function addTask(taskText = newTaskInput.value.trim()) {
 
     const taskItem = document.createElement('li');
     taskItem.textContent = taskText;
+    taskItem.addEventListener('click', toggleTaskCompletion);
 
-    // Delete button for each task
+    // Create a delete button for each task
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
-    deleteBtn.addEventListener('click', function() {
+    deleteBtn.className = 'delete-btn'; // Assign a class for styling
+    deleteBtn.onclick = function() {
         taskItem.remove();
-    });
-    taskItem.appendChild(deleteBtn);
+    };
 
+    // Append the delete button to the task item
+    taskItem.appendChild(deleteBtn);
     taskList.appendChild(taskItem);
     newTaskInput.value = ''; // Clear input field after adding task
-
-    taskItem.addEventListener('click', function(event) {
-        if (event.target === deleteBtn) return; // Prevent toggle if the delete button was clicked
-        toggleTaskCompletion(event);
-    });
 }
 
+
+// Additional functionality for task description next to the timer
+const currentTaskInput = document.getElementById('current-task-input');
+const startTaskTimerBtn = document.getElementById('start-task-timer-btn');
+
+startTaskTimerBtn.addEventListener('click', function() {
+    const currentTask = currentTaskInput.value.trim();
+    if (!currentTask) {
+        alert('Please enter the current task.');
+        return;
+    }
+
+    // Check if the task already exists in the task list
+    let taskExists = Array.from(taskList.children).some(
+        taskItem => taskItem.textContent.replace('Delete', '').trim() === currentTask
+    );
+
+    // If the task does not exist, add it to the list
+    if (!taskExists) {
+        addTask(currentTask);
+    }
+
+    // Set the timer for the specified task and start it
+    startTimer();
+});
+
+// Existing saveNote function remains unchanged...
 
 addTaskBtn.addEventListener('click', addTask);
 
