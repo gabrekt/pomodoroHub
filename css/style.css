@@ -63,3 +63,12 @@ li {
 .completed {
     text-decoration: line-through;
 }
+
+.sidebar {
+    /* Other styles remain unchanged */
+    border-right: 2px solid #ccc; /* Add a right border to both sidebars */
+}
+
+#notes-section {
+    border-right: none; /* Remove the right border for the notes section */
+}

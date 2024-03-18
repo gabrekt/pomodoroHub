@@ -62,8 +62,7 @@ const addTaskBtn = document.getElementById('add-task-btn');
 const newTaskInput = document.getElementById('new-task-input');
 const taskList = document.getElementById('task-list');
 
-function addTask() {
-    const taskText = newTaskInput.value.trim();
+function addTask(taskText = newTaskInput.value.trim()) {
     if (!taskText) {
         alert('Please enter a task.');
         return;
@@ -71,11 +70,24 @@ function addTask() {
 
     const taskItem = document.createElement('li');
     taskItem.textContent = taskText;
-    taskItem.addEventListener('click', toggleTaskCompletion);
+
+    // Delete button for each task
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.addEventListener('click', function() {
+        taskItem.remove();
+    });
+    taskItem.appendChild(deleteBtn);
 
     taskList.appendChild(taskItem);
     newTaskInput.value = ''; // Clear input field after adding task
+
+    taskItem.addEventListener('click', function(event) {
+        if (event.target === deleteBtn) return; // Prevent toggle if the delete button was clicked
+        toggleTaskCompletion(event);
+    });
 }
+
 
 addTaskBtn.addEventListener('click', addTask);
 
@@ -103,3 +115,19 @@ function saveNote() {
 }
 
 saveNoteBtn.addEventListener('click', saveNote);
+
+document.getElementById('start-task-timer-btn').addEventListener('click', function() {
+    const taskInput = document.getElementById('current-task-input');
+    const task = taskInput.value.trim();
+    if (!task) {
+        alert('Please enter a task.');
+        return;
+    }
+
+    let taskExists = Array.from(document.querySelectorAll('#task-list li')).some(taskItem => taskItem.textContent.includes(task));
+    if (!taskExists) {
+        addTask(task);
+    }
+
+    startTimer();
+});
