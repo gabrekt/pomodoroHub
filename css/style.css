@@ -1,58 +1,60 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #F8BBD0; /* Light pink background */
+    font-family: 'Arial', sans-serif;
+    background-color: #007F73; /* Light pink background */
 }
 
 #app {
     display: flex;
-    justify-content: space-between;
-    height: 100vh;
-    border-top: 3px solid #AD1457; /* Darker pink border on top as separator */
-    background-color: #F48FB1; /* Light pink background for the app container */
+    justify-content: space-around;
+    align-items: flex-start; /* Align items at the top */
+    padding-top: 20px;
 }
 
-.sidebar {
-    flex: 1;
+.sidebar, #pomodoro-timer {
+    background-color: #FFC700; /* Lighter pink for each section */
     padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    border-right: 2px solid #AD1457; /* Darker pink line separator */
+    margin: 10px;
+    border-radius: 10px; /* Rounded corners for each section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
+
+/* Styles for the Pomodoro timer specifically */
 #pomodoro-timer {
-    flex: 2;
+    background-color: #4CCD99; /* Darker pink/red for the timer */
+    color: rgb(0, 0, 0);
+    padding: 40px;
+    border-radius: 20px; /* More pronounced rounded corners for the timer */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #FFCDD2; /* Even lighter pink for the timer section */
 }
 
 #timer-display {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: #D81B60; /* Dark pink font color for the timer display */
+    font-size: 5em; /* Larger font size for the timer display */
+    margin: 0;
 }
 
 button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #AD1457; /* Darker pink for buttons */
-    color: white;
+    background-color: #FFF455; /* Button color */
+    color: rgb(0, 0, 0);
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Space above the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #C2185B; /* Slightly darker pink on hover for buttons */
+    background-color: #FFC700; /* Slightly darker on hover */
 }
 
 input[type="text"], textarea {
@@ -103,4 +105,10 @@ li {
 
 #notes-section {
     border-right: none; /* Remove the right border for the notes section */
+}
+
+/* Button styles for the delete button next to each task */
+#task-list button {
+    background-color: #eb7a77; /* Make delete buttons stand out */
+    margin-left: 10px; /* Space from the task text */
 }

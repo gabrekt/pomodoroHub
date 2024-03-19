@@ -62,29 +62,35 @@ const addTaskBtn = document.getElementById('add-task-btn');
 const newTaskInput = document.getElementById('new-task-input');
 const taskList = document.getElementById('task-list');
 
-function addTask(taskText = newTaskInput.value.trim()) {
+function addTask(taskText) {
+    // Determine if taskText is an event or a string
+    if (!taskText || typeof taskText !== 'string') {
+        taskText = newTaskInput.value.trim();
+    }
+    
     if (!taskText) {
         alert('Please enter a task.');
         return;
     }
 
     const taskItem = document.createElement('li');
-    taskItem.textContent = taskText;
-    taskItem.addEventListener('click', toggleTaskCompletion);
+    const taskContent = document.createTextNode(taskText);
+    taskItem.appendChild(taskContent);
 
-    // Create a delete button for each task
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
-    deleteBtn.className = 'delete-btn'; // Assign a class for styling
-    deleteBtn.onclick = function() {
+    deleteBtn.addEventListener('click', function() {
         taskItem.remove();
-    };
+    });
 
-    // Append the delete button to the task item
     taskItem.appendChild(deleteBtn);
     taskList.appendChild(taskItem);
     newTaskInput.value = ''; // Clear input field after adding task
+    taskItem.addEventListener('click', toggleTaskCompletion);
 }
+
+addTaskBtn.addEventListener('click', function() { addTask(); });
+
 
 
 // Additional functionality for task description next to the timer
