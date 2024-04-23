@@ -3,6 +3,13 @@ const startBtn = document.getElementById('start-timer-btn');
 const pauseBtn = document.getElementById('pause-timer-btn');
 const resetBtn = document.getElementById('reset-timer-btn');
 
+document.addEventListener('DOMContentLoaded', () => {
+    loadTasks();
+    loadSettings();
+
+});
+
+
 let timerDuration = 25 * 60; // 25 minutes in seconds
 let timerId = null;
 let isPaused = true;
@@ -162,3 +169,32 @@ document.getElementById('start-task-timer-btn').addEventListener('click', functi
 
     startTimer();
 });
+
+function loadTasks() {
+    const tasks = Storage.loadTasks();
+    tasks.forEach(taskText => addTask(taskText));
+}
+
+function loadSettings() {
+    const settings = Storage.loadSettings();
+    if (settings.timerDuration) {
+        timerDuration = settings.timerDuration;
+        updateTimerDisplay(timerDuration);
+    }
+    // Apply other settings as needed
+}
+
+function saveTasks() {
+    const tasks = Array.from(document.querySelectorAll('#task-list li')).map(taskItem => {
+        return taskItem.textContent.replace('Delete', '').trim();
+    });
+    Storage.saveTasks(tasks);
+}
+
+function saveSettings() {
+    const settings = {
+        timerDuration: timerDuration
+        // Save other settings as needed
+    };
+    Storage.saveSettings(settings);
+}
