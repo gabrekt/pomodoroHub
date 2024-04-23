@@ -2,6 +2,8 @@
 
 Pomodoro Hub is a simpleweb application designed to enhance productivity and because i wanted my own timer. It combines a Pomodoro timer, a task manager, and a notes section into one intuitive interface, making it easier for users to focus on their work, manage tasks, and jot down quick notes all in one place.
 
+Right now it has limited functionallity, but we're (me and my cat) currently working in new versions.
+
 ## Features
 
 - **Pomodoro Timer**: Utilize the Pomodoro technique with a 25-minute focus timer followed by short breaks to maximize productivity.
