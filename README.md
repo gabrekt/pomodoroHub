@@ -1,6 +1,6 @@
 # Pomodoro Hub
 
-Pomodoro Hub is a simpleweb application designed to enhance productivity and because i wanted my own timer. It combines a Pomodoro timer, a task manager, and a notes section into one intuitive interface, making it easier for users to focus on their work, manage tasks, and jot down quick notes all in one place.
+Pomodoro Hub is a simpleweb application designed to enhance productivity and because i wanted my own timer. It combines a Pomodoro timer, a task manager, and a notes section into one ugly interface, making it harder for users to focus on their work, manage tasks, and jot down quick notes all in one place.
 
 Right now it has limited functionallity, but we're (me and my cat) currently working in new versions.
 
@@ -14,7 +14,7 @@ Right now it has limited functionallity, but we're (me and my cat) currently wor
 
 To get started with Pomodoro Hub, simply clone the repository to your local machine, and open the `index.html` file in a web browser.
 
-git clone https://github.com/your-username/pomodoro-hub.git
+git clone https://github.com/gabrekt/pomodoro-hub.git
 
 
 Navigate to the project directory and open the `index.html` file:
@@ -32,6 +32,21 @@ open index.html
 ## Contributions
 
 Contributions are welcome! If you have suggestions for improvements or new features, feel free to fork the repository and submit a pull request.
+
+## To do:
+
+- saving notes and task.
+- set your own time or choose between 15, 25, 40 and 50 minutes.
+- put a circular clock, just for aesthetics.
+- note section as card, looking like trello.
+- break timer (15 or 5 min.)
+- Auto-start work time: once enabled, you will no longer need to manually start the work timer again after the break ends, it will automatically start for you.
+- Dark Theme
+
+ ### Become this an desktop App
+- **Desktop notification** 
+- **Always on top** once enabled, the app will always be on top of other apps running on your Operating System
+- **Close to tray** - once enabled, the close action will not quit the app. Instead, it will be hidden and sent to the tray.
 
 ## License
 

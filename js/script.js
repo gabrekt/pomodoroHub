@@ -1,13 +1,43 @@
+document.addEventListener('DOMContentLoaded', () => {
+    loadTasks();
+    loadNotes();
+    loadSettings();
+
+});
+
+
 const timerDisplay = document.getElementById('timer-display');
 const startBtn = document.getElementById('start-timer-btn');
 const pauseBtn = document.getElementById('pause-timer-btn');
 const resetBtn = document.getElementById('reset-timer-btn');
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadTasks();
-    loadSettings();
+function saveNotes() {
+    const notes = Array.from(document.querySelectorAll('#note-list li')).map(noteItem => noteItem.textContent);
+    Storage.saveNotes(notes);
+}
 
+function loadNotes() {
+    const notes = Storage.loadNotes();
+    notes.forEach(noteText => addNote(noteText));
+}
+
+function addNote(noteText) {
+    const noteItem = document.createElement('li');
+    noteItem.textContent = noteText;
+    noteList.appendChild(noteItem);
+    saveNotes(); // Save notes after adding a new one
+}
+
+saveNoteBtn.addEventListener('click', function() {
+    const noteText = noteInput.value.trim();
+    if (noteText) {
+        addNote(noteText);
+        noteInput.value = ''; // Clear textarea after saving note
+    } else {
+        alert('Please enter a note.');
+    }
 });
+
 
 
 let timerDuration = 25 * 60; // 25 minutes in seconds
@@ -24,7 +54,7 @@ updateTimerDisplay(timerDuration);
 
 function startTimer() {
     if (!isPaused) return; // Prevent multiple intervals if already running
-    isPaused = false;
+    isPaused = true;
     pauseBtn.style.display = 'inline-block'; // Show pause button
 
     timerId = setInterval(() => {
