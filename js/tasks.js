@@ -28,3 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const tasks = Storage.loadTasks();
     tasks.forEach(taskText => addTask(taskText));
 });
+
+
+// Additional functionality for task description next to the timer
+const currentTaskInput = document.getElementById('current-task-input');
+const startTaskTimerBtn = document.getElementById('start-task-timer-btn');
+
+function handleStartTask() {
+    const currentTask = currentTaskInput.value.trim();
+    if (!currentTask) {
+        alert('Please enter the current task.');
+        return;
+    }
+
+    // Check if the task is already in the list
+    const taskExists = Array.from(taskList.children).some(taskItem => taskItem.textContent === currentTask);
+    if (!taskExists) {
+        addTask(currentTask); // Add the task if it doesn't exist
+    }
+
+    startTimer(); // Start the timer for the new task
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Load existing tasks and setup event listeners
+    const tasks = Storage.loadTasks();
+    tasks.forEach(taskText => addTask(taskText));
+
+    // Set up event listener for starting tasks
+    startTaskTimerBtn.addEventListener('click', handleStartTask);
+});
