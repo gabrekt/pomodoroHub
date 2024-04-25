@@ -35,7 +35,7 @@ Contributions are welcome! If you have suggestions for improvements or new featu
 
 ## To do:
 
-- saving notes and task.
+- [ x ]saving notes and task.
 - set your own time or choose between 15, 25, 40 and 50 minutes.
 - put a circular clock, just for aesthetics.
 - note section as card, looking like trello.
