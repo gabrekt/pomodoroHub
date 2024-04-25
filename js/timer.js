@@ -3,6 +3,8 @@ const timerDisplay = document.getElementById('timer-display');
 const startBtn = document.getElementById('start-timer-btn');
 const pauseBtn = document.getElementById('pause-timer-btn');
 const resetBtn = document.getElementById('reset-timer-btn');
+const fullTime = 25 * 60; // Total time for the Pomodoro in seconds
+const timerProgress = document.querySelector('.timer-progress');
 
 let timerDuration = 25 * 60; // Default 25 minutes
 let timerId = null;
@@ -12,6 +14,10 @@ function updateTimerDisplay(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     timerDisplay.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+
+    const circumference = 2 * Math.PI * 90; // The circumference of the circle
+    const offset = circumference - (seconds / fullTime) * circumference;
+    timerProgress.style.strokeDashoffset = offset;
 }
 
 function startTimer() {
@@ -44,6 +50,8 @@ function resetTimer() {
     isPaused = true;
     pauseBtn.style.display = 'none';
     updateTimerDisplay(timerDuration);
+
+    timerProgress.style.strokeDashoffset = 2 * Math.PI * 90; // The circumference of the circle
 }
 
 document.addEventListener('DOMContentLoaded', () => {

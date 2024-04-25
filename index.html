@@ -19,6 +19,14 @@
         
         <div id="pomodoro-timer">
             <h2>Pomodoro Timer</h2>
+            <svg viewBox="0 0 200 200" id="timer-circle" class="timer-circle">
+                <!-- Background Circle -->
+                <circle cx="100" cy="100" r="90" stroke="#3C5B6F" fill="none" stroke-width="10" />
+                <!-- Foreground Circle - The Timer Progress -->
+                <circle cx="100" cy="100" r="90" stroke="#DFD0B8" fill="none" stroke-width="10"
+                        stroke-dasharray="565.48" stroke-dashoffset="0" class="timer-progress"/>
+            </svg>
+            <span id="time-left">25:00</span> <!-- Assuming this is where the time is displayed -->
             <input type="text" id="current-task-input" placeholder="Current task..." />
             <div id="timer-display">25:00</div>
             <button id="start-task-timer-btn">Start Task</button>
