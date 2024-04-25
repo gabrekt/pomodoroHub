@@ -112,3 +112,40 @@ li {
     background-color: #eb7a77; /* Make delete buttons stand out */
     margin-left: 10px; /* Space from the task text */
 }
+
+
+/* Style for task and note items */
+.task-item, .note-item {
+    position: relative;
+    padding: 10px;
+    list-style-type: none;
+  }
+  
+  /* Style for delete buttons */
+  .delete-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none; /* Hide by default */
+    cursor: pointer;
+  }
+  
+  /* Show delete button on hover */
+  .task-item:hover .delete-btn,
+  .note-item:hover .delete-btn {
+    display: block;
+  }
+
+  #delete-all-tasks, #delete-all-notes {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#delete-all-tasks:hover, #delete-all-notes:hover {
+    background-color: darkred;
+}

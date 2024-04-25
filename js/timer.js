@@ -3,6 +3,7 @@ const timerDisplay = document.getElementById('timer-display');
 const startBtn = document.getElementById('start-timer-btn');
 const pauseBtn = document.getElementById('pause-timer-btn');
 const resetBtn = document.getElementById('reset-timer-btn');
+
 let timerDuration = 25 * 60; // Default 25 minutes
 let timerId = null;
 let isPaused = true;
