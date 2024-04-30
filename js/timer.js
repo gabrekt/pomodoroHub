@@ -35,6 +35,10 @@ function startTimer() {
         timerDuration--;
         updateTimerDisplay(timerDuration);
     }, 1000);
+
+    const progressCircle = document.querySelector('.timer-progress');
+    progressCircle.style.stroke = "#4CCD99"; // Change to green when the timer starts
+
 }
 
 function pauseTimer() {
